@@ -1,0 +1,61 @@
+==========================================
+BIG O NOTATION - TIME COMPLEXITY ANALYSIS
+==========================================
+
+1. LINEAR SEARCH - O(n)
+   - Searches sequentially through array
+   - Best Case: O(1) - Element found at first position
+   - Average Case: O(n) - Element found in middle
+   - Worst Case: O(n) - Element at end or not found
+   - Works on unsorted data
+
+2. BINARY SEARCH - O(log n)
+   - Divides search space in half each iteration
+   - Requires: Array must be sorted
+   - Best Case: O(1) - Element at middle position
+   - Average Case: O(log n)
+   - Worst Case: O(log n) - Element not found
+   - Much faster for large datasets
+
+3. CATEGORY SEARCH - O(n)
+   - Iterates through all products
+   - Compares each product's category
+   - Time Complexity: O(n)
+
+4. TITLE SEARCH - O(n*m)
+   - Linear search through all products
+   - String comparison for each product
+   - m = length of search string
+   - Time Complexity: O(n*m)
+
+5. PRICE RANGE SEARCH - O(n)
+   - Iterates through all products
+   - Checks if price is in range
+   - Time Complexity: O(n)
+
+6. IN-STOCK SEARCH - O(n)
+   - Iterates through all products
+   - Checks stock quantity
+   - Time Complexity: O(n)
+
+COMPARISON:
+===========
+For n = 1,000,000 items:
+  Linear Search:   ~1,000,000 operations
+  Binary Search:   ~20 operations
+  Category Search: ~1,000,000 operations
+
+KEY POINTS:
+===========
+- O(1) = Constant time (fastest)
+- O(log n) = Logarithmic (very fast)
+- O(n) = Linear (moderate)
+- O(n*m) = Quadratic (slower)
+- O(n²) = Quadratic (slow)
+- O(2^n) = Exponential (very slow)
+
+WHEN TO USE:
+============
+- Linear Search: Small datasets, unsorted data
+- Binary Search: Large sorted datasets
+- Filter operations: Specific criteria searches
