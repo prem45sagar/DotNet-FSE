@@ -1,9 +1,10 @@
 -- =====================================================================
--- SQL RANKING AND WINDOW FUNCTIONS EXERCISE
--- Demonstrates ROW_NUMBER(), RANK(), and DENSE_RANK() Functions
+-- SQL RANKING AND WINDOW FUNCTIONS - BEGINNER LEVEL
+-- Learn ROW_NUMBER(), RANK(), and DENSE_RANK() Step by Step
 -- =====================================================================
 
--- Create Table
+-- Step 1: Create Table
+-- A simple Products table with basic information
 CREATE TABLE Products
 (
     ProductID INT PRIMARY KEY,
@@ -12,7 +13,8 @@ CREATE TABLE Products
     Price DECIMAL(10,2)
 );
 
--- Insert Data
+-- Step 2: Insert Sample Data
+-- We'll use this data for all examples below
 INSERT INTO Products VALUES
 (1,'Laptop','Electronics',80000),
 (2,'Mobile','Electronics',60000),
@@ -28,78 +30,177 @@ INSERT INTO Products VALUES
 (12,'Bed','Furniture',30000);
 
 -- =====================================================================
--- 1. ROW_NUMBER() - Assigns unique sequential number to rows
---    Useful when you need unique row identification within partition
+-- EXAMPLE 1: Basic ROW_NUMBER() - Numbering Rows
 -- =====================================================================
-SELECT *,
-ROW_NUMBER() OVER
-(
-    PARTITION BY Category
-    ORDER BY Price DESC
-) AS RowNum
-FROM Products
-ORDER BY Category, Price DESC;
+-- What: Gives each row a unique number starting from 1
+-- When to use: When you need to identify rows with sequential numbers
+-- 
+-- How it works:
+-- - PARTITION BY Category: Separate numbering for each category
+-- - ORDER BY Price DESC: Arrange by price (highest to lowest)
+-- Result: Each row gets a number within its category
+-- =====================================================================
 
--- =====================================================================
--- 2. RANK() - Assigns rank with gaps for ties
---    Useful when you need to identify top performers with same values
--- =====================================================================
-SELECT *,
-RANK() OVER
-(
-    PARTITION BY Category
-    ORDER BY Price DESC
-) AS RankNum
-FROM Products
-ORDER BY Category, Price DESC;
-
--- =====================================================================
--- 3. DENSE_RANK() - Assigns rank without gaps for ties
---    Useful for continuous ranking without skipping numbers
--- =====================================================================
-SELECT *,
-DENSE_RANK() OVER
-(
-    PARTITION BY Category
-    ORDER BY Price DESC
-) AS DenseRankNum
-FROM Products
-ORDER BY Category, Price DESC;
-
--- =====================================================================
--- 4. GET TOP 3 PRODUCTS IN EACH CATEGORY - Using ROW_NUMBER()
--- =====================================================================
-SELECT ProductID, ProductName, Category, Price, RowNum
-FROM
-(
-    SELECT *,
-    ROW_NUMBER() OVER
-    (
+SELECT 
+    ProductID,
+    ProductName,
+    Category,
+    Price,
+    ROW_NUMBER() OVER (
         PARTITION BY Category
         ORDER BY Price DESC
-    ) AS RowNum
+    ) AS RowNumber
+FROM Products
+ORDER BY Category, Price DESC;
+
+-- Expected Output Example:
+-- ProductID | ProductName | Category   | Price | RowNumber
+-- 1         | Laptop      | Electronics| 80000 | 1
+-- 2         | Mobile      | Electronics| 60000 | 2
+-- 3         | Tablet      | Electronics| 40000 | 3
+
+-- =====================================================================
+-- EXAMPLE 2: Basic RANK() - Ranking with Gaps
+-- =====================================================================
+-- What: Gives rank to rows, but skips numbers if values are same (tied)
+-- When to use: When you want to rank items and show gaps for ties
+--
+-- How it works:
+-- - Same PARTITION BY and ORDER BY as above
+-- - If two items have same price, they get same rank
+-- - The next rank skips a number
+-- Result: Shows ranking with gaps
+-- =====================================================================
+
+SELECT 
+    ProductID,
+    ProductName,
+    Category,
+    Price,
+    RANK() OVER (
+        PARTITION BY Category
+        ORDER BY Price DESC
+    ) AS RankNumber
+FROM Products
+ORDER BY Category, Price DESC;
+
+-- Expected Output Example:
+-- If two items had same price:
+-- ProductID | ProductName | Category   | Price | RankNumber
+-- 1         | Laptop      | Electronics| 80000 | 1
+-- 2         | Mobile      | Electronics| 60000 | 2
+-- 2         | Another     | Electronics| 60000 | 2  (same as above)
+-- 4         | Tablet      | Electronics| 40000 | 4  (skips 3!)
+
+-- =====================================================================
+-- EXAMPLE 3: Basic DENSE_RANK() - Ranking without Gaps
+-- =====================================================================
+-- What: Gives rank to rows without skipping numbers
+-- When to use: When you want continuous ranking like 1,2,3,4...
+--
+-- How it works:
+-- - Same as RANK(), but doesn't skip numbers
+-- - If two items tied at rank 2, next rank is still 3
+-- Result: Continuous ranking without gaps
+-- =====================================================================
+
+SELECT 
+    ProductID,
+    ProductName,
+    Category,
+    Price,
+    DENSE_RANK() OVER (
+        PARTITION BY Category
+        ORDER BY Price DESC
+    ) AS DenseRankNumber
+FROM Products
+ORDER BY Category, Price DESC;
+
+-- Expected Output Example:
+-- If two items had same price:
+-- ProductID | ProductName | Category   | Price | DenseRankNumber
+-- 1         | Laptop      | Electronics| 80000 | 1
+-- 2         | Mobile      | Electronics| 60000 | 2
+-- 2         | Another     | Electronics| 60000 | 2  (same as above)
+-- 3         | Tablet      | Electronics| 40000 | 3  (continues from 3, no gap!)
+
+-- =====================================================================
+-- PRACTICAL EXAMPLE 1: Get Top 2 Products from Each Category
+-- =====================================================================
+-- Real use case: Find the 2 most expensive items in each category
+-- 
+-- How: 
+-- 1. Use ROW_NUMBER() to number products by price
+-- 2. Filter only rows where RowNum <= 2
+-- Result: Only top 2 products per category
+-- =====================================================================
+
+SELECT 
+    ProductID,
+    ProductName,
+    Category,
+    Price
+FROM
+(
+    -- Inner query: Add row numbers
+    SELECT 
+        ProductID,
+        ProductName,
+        Category,
+        Price,
+        ROW_NUMBER() OVER (
+            PARTITION BY Category
+            ORDER BY Price DESC
+        ) AS RowNum
     FROM Products
-) T
-WHERE RowNum <= 3
+) AS RankedProducts
+WHERE RowNum <= 2
 ORDER BY Category, RowNum;
 
+-- Expected Output:
+-- Electronics: Laptop (80000), Mobile (60000)
+-- Fashion: Jacket (5000), Shoes (4000)
+-- Furniture: Sofa (25000), Bed (30000)
+
 -- =====================================================================
--- 5. COMPARISON: ROW_NUMBER() vs RANK() vs DENSE_RANK()
---    Shows the difference when there are tied values
+-- SIMPLE COMPARISON: ROW_NUMBER() vs RANK() vs DENSE_RANK()
 -- =====================================================================
-SELECT ProductID, ProductName, Category, Price,
-    ROW_NUMBER() OVER (PARTITION BY Category ORDER BY Price DESC) AS RowNum,
-    RANK() OVER (PARTITION BY Category ORDER BY Price DESC) AS RankNum,
-    DENSE_RANK() OVER (PARTITION BY Category ORDER BY Price DESC) AS DenseRankNum
+-- See all three functions side by side for each category
+-- This helps you understand the difference:
+-- =====================================================================
+
+SELECT 
+    ProductID,
+    ProductName,
+    Category,
+    Price,
+    ROW_NUMBER() OVER (
+        PARTITION BY Category 
+        ORDER BY Price DESC
+    ) AS RNum,
+    RANK() OVER (
+        PARTITION BY Category 
+        ORDER BY Price DESC
+    ) AS RankNum,
+    DENSE_RANK() OVER (
+        PARTITION BY Category 
+        ORDER BY Price DESC
+    ) AS DenseRankNum
 FROM Products
 ORDER BY Category, Price DESC;
 
 -- =====================================================================
--- 6. BONUS: Get Products with Price Difference from Category Max
+-- QUICK REFERENCE TABLE
 -- =====================================================================
-SELECT ProductID, ProductName, Category, Price,
-    MAX(Price) OVER (PARTITION BY Category) AS MaxPriceInCategory,
-    (MAX(Price) OVER (PARTITION BY Category) - Price) AS PriceDifferenceFromMax,
-    RANK() OVER (PARTITION BY Category ORDER BY Price DESC) AS RankNum
-FROM Products
-ORDER BY Category, Price DESC;
+-- 
+-- Function      | Use When...                              | Behavior with Ties
+-- --------------|------------------------------------------|--------------------
+-- ROW_NUMBER()  | You need unique row numbers              | Different numbers
+-- RANK()        | You want ranking with gaps               | Same rank, next skips
+-- DENSE_RANK()  | You want continuous ranking              | Same rank, next continuous
+--
+-- Example with same price of 5000:
+-- ROW_NUMBER(): 1, 2, 3, 4...
+-- RANK():       1, 2, 2, 4...
+-- DENSE_RANK(): 1, 2, 2, 3...
+-- =====================================================================
