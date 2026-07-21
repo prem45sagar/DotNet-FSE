@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box Model & Layout Control</title>
+
+    <style>
+        .eventCard{
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px;
+            background-color: lightblue;
+        }
+
+        input:focus{
+            outline: 3px solid red;
+        }
+
+        .hiddenBox{
+            visibility: hidden;
+            border: 1px solid black;
+        }
+
+        .noneBox{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="eventCard">
+        <h2>Community Event</h2>
+        <p>This card demonstrates margin, padding and border.</p>
+    </div>
+
+    <form>
+        Name:
+        <input type="text">
+    </form>
+
+    <h3>visibility: hidden</h3>
+    <div class="hiddenBox">
+        This box is hidden but space is reserved.
+    </div>
+
+    <h3>display: none</h3>
+    <div class="noneBox">
+        This box is completely removed.
+    </div>
+
+</body>
+</html>

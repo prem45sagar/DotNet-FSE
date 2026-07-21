@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Styling</title>
+
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 60%;
+            text-align: center;
+        }
+
+        th{
+            background-color: lightblue;
+        }
+
+        table, th, td{
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        tr:nth-child(even){
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Event Details</h2>
+
+    <table>
+        <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Venue</th>
+        </tr>
+
+        <tr>
+            <td>Workshop</td>
+            <td>10 Aug</td>
+            <td>Hall A</td>
+        </tr>
+
+        <tr>
+            <td>Sports</td>
+            <td>15 Aug</td>
+            <td>Ground</td>
+        </tr>
+
+        <tr>
+            <td>Cultural Fest</td>
+            <td>20 Aug</td>
+            <td>Auditorium</td>
+        </tr>
+    </table>
+
+</body>
+</html>

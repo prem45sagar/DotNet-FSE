@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Functions and Closures</title>
+</head>
+<body>
+
+<script>
+
+function addEvent(name){
+    console.log("Event Added: " + name);
+}
+
+function registerUser(user){
+    console.log(user + " Registered");
+}
+
+function filterEventsByCategory(events, callback){
+    return events.filter(callback);
+}
+
+function registrationCounter(){
+    let total = 0;
+
+    return function(){
+        total++;
+        return total;
+    };
+}
+
+const count = registrationCounter();
+
+console.log("Registrations: " + count());
+console.log("Registrations: " + count());
+
+const events = [
+    {name:"Music Fest", category:"Music"},
+    {name:"Workshop", category:"Education"}
+];
+
+const result = filterEventsByCategory(
+    events,
+    event => event.category === "Music"
+);
+
+console.log(result);
+
+addEvent("Sports Day");
+registerUser("Ujjwal");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Feedback</title>
+    <script>
+        function validatePhone() {
+            let phone = document.getElementById("phone").value;
+            if (phone.length != 10) {
+                alert("Enter a valid 10-digit phone number");
+            }
+        }
+
+        function showFee() {
+            let event = document.getElementById("event").value;
+            let fee = "";
+
+            if (event == "Workshop")
+                fee = "Fee: ₹500";
+            else if (event == "Sports")
+                fee = "Fee: ₹300";
+            else if (event == "Cultural")
+                fee = "Fee: ₹200";
+
+            document.getElementById("fee").innerHTML = fee;
+        }
+
+        function confirmSubmit() {
+            alert("Feedback Submitted Successfully!");
+        }
+
+        function enlargeImage(img) {
+            img.style.width = "300px";
+            img.style.height = "300px";
+        }
+
+        function countChars() {
+            let text = document.getElementById("feedback").value;
+            document.getElementById("count").innerHTML =
+                "Characters: " + text.length;
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Event Feedback Form</h2>
+
+    Phone Number:
+    <input type="text" id="phone" onblur="validatePhone()">
+    <br><br>
+
+    Select Event:
+    <select id="event" onchange="showFee()">
+        <option>Workshop</option>
+        <option>Sports</option>
+        <option>Cultural</option>
+    </select>
+
+    <p id="fee"></p>
+
+    <img src="event.jpg" width="150" height="150"
+         ondblclick="enlargeImage(this)">
+
+    <br><br>
+
+    Feedback:
+    <textarea id="feedback" onkeyup="countChars()"></textarea>
+
+    <p id="count">Characters: 0</p>
+
+    <button onclick="confirmSubmit()">Submit</button>
+
+</body>
+</html>

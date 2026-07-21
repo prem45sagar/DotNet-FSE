@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+</head>
+<body>
+
+<div id="events"></div>
+
+<script>
+
+const container = document.querySelector("#events");
+
+const card = document.createElement("div");
+
+card.innerHTML = `
+<h3>Music Fest</h3>
+<button onclick="register()">Register</button>
+<button onclick="cancel()">Cancel</button>
+`;
+
+container.appendChild(card);
+
+function register(){
+    card.innerHTML += "<p>Registered Successfully</p>";
+}
+
+function cancel(){
+    card.innerHTML += "<p>Registration Cancelled</p>";
+}
+
+</script>
+
+</body>
+</html>

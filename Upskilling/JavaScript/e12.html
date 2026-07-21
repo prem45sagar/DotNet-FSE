@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX & Fetch API</title>
+</head>
+<body>
+
+<button onclick="registerUser()">
+    Submit Registration
+</button>
+
+<p id="msg"></p>
+
+<script>
+
+function registerUser(){
+
+    document.getElementById("msg").innerHTML =
+    "Sending Data...";
+
+    setTimeout(()=>{
+
+        fetch(
+        "https://jsonplaceholder.typicode.com/posts",
+        {
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                name:"Ujjwal",
+                event:"Music Fest"
+            })
+        })
+
+        .then(response => response.json())
+
+        .then(data=>{
+            document.getElementById("msg").innerHTML =
+            "Registration Successful";
+            console.log(data);
+        })
+
+        .catch(error=>{
+            document.getElementById("msg").innerHTML =
+            "Registration Failed";
+        });
+
+    },2000);
+
+}
+
+</script>
+
+</body>
+</html>

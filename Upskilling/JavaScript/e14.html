@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Example</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<button id="registerBtn">
+    Show Event
+</button>
+
+<div id="eventCard"
+style="display:none; border:1px solid black; padding:10px;">
+    Music Fest Event
+</div>
+
+<script>
+
+$("#registerBtn").click(function(){
+
+    $("#eventCard").fadeIn(1000);
+
+    setTimeout(()=>{
+        $("#eventCard").fadeOut(1000);
+    },3000);
+
+});
+
+</script>
+
+</body>
+</html>

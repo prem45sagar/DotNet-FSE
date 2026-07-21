@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modern JavaScript</title>
+</head>
+<body>
+
+<script>
+
+const eventList = [
+    {
+        name:"Music Fest",
+        date:"20-Aug-2025"
+    },
+
+    {
+        name:"Sports Day",
+        date:"25-Aug-2025"
+    }
+];
+
+function showEvent(
+    eventName = "Community Event"
+){
+    console.log(eventName);
+}
+
+showEvent();
+
+const {name,date} = eventList[0];
+
+console.log(name);
+console.log(date);
+
+const clonedEvents = [...eventList];
+
+console.log(clonedEvents);
+
+</script>
+
+</body>
+</html>

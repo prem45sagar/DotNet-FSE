@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Handling</title>
+</head>
+<body>
+
+<select id="category" onchange="filterEvents()">
+    <option>Music</option>
+    <option>Sports</option>
+    <option>Workshop</option>
+</select>
+
+<br><br>
+
+<input type="text" id="search" placeholder="Search Event">
+
+<br><br>
+
+<button onclick="register()">Register</button>
+
+<p id="output"></p>
+
+<script>
+
+function register(){
+    document.getElementById("output").innerHTML =
+    "Registration Successful";
+}
+
+function filterEvents(){
+    let category =
+    document.getElementById("category").value;
+
+    document.getElementById("output").innerHTML =
+    "Selected Category: " + category;
+}
+
+document.getElementById("search")
+.addEventListener("keydown", function(){
+    console.log("Searching...");
+});
+
+</script>
+
+</body>
+</html>

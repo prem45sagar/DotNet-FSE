@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Working with Forms</title>
+
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+
+<form id="registerForm">
+
+    Name:
+    <input type="text" name="name">
+    <span id="nameError" class="error"></span>
+
+    <br><br>
+
+    Email:
+    <input type="email" name="email">
+    <span id="emailError" class="error"></span>
+
+    <br><br>
+
+    Event:
+    <select name="event">
+        <option value="">Select Event</option>
+        <option>Music Fest</option>
+        <option>Workshop</option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Register</button>
+
+</form>
+
+<script>
+
+document.getElementById("registerForm")
+.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    let form = event.target;
+
+    let name = form.elements["name"].value;
+    let email = form.elements["email"].value;
+    let selectedEvent = form.elements["event"].value;
+
+    document.getElementById("nameError").innerHTML="";
+    document.getElementById("emailError").innerHTML="";
+
+    let valid = true;
+
+    if(name===""){
+        document.getElementById("nameError").innerHTML =
+        " Name Required";
+        valid = false;
+    }
+
+    if(email===""){
+        document.getElementById("emailError").innerHTML =
+        " Email Required";
+        valid = false;
+    }
+
+    if(valid){
+        alert("Registered for " + selectedEvent);
+    }
+
+});
+
+</script>
+
+</body>
+</html>

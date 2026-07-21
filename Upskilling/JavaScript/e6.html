@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arrays and Methods</title>
+</head>
+<body>
+
+<script>
+
+let events = [];
+
+events.push("Music Event");
+events.push("Workshop");
+events.push("Music Concert");
+
+console.log(events);
+
+let musicEvents = events.filter(
+    event => event.includes("Music")
+);
+
+console.log(musicEvents);
+
+let cards = events.map(
+    event => "Workshop on " + event
+);
+
+console.log(cards);
+
+</script>
+
+</body>
+</html>

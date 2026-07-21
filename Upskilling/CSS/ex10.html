@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Web Design</title>
+
+    <style>
+        body{
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .nav{
+            display: flex;
+            background-color: navy;
+            padding: 2vh;
+        }
+
+        .nav a{
+            color: white;
+            text-decoration: none;
+            margin-right: 2vw;
+        }
+
+        .container{
+            display: flex;
+            justify-content: space-around;
+            padding: 2vh;
+        }
+
+        .card{
+            width: 30%;
+            border: 1px solid black;
+            padding: 2vh;
+            text-align: center;
+        }
+
+        img{
+            width: 20vw;
+            height: auto;
+        }
+
+        h2{
+            font-size: 2vw;
+        }
+
+        /* Media Query */
+        @media screen and (max-width: 768px){
+
+            .nav{
+                flex-direction: column;
+            }
+
+            .container{
+                flex-direction: column;
+            }
+
+            .card{
+                width: 90%;
+                margin: 10px auto;
+            }
+
+            img{
+                width: 50vw;
+            }
+
+            h2{
+                font-size: 5vw;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a href="#">Home</a>
+        <a href="#">Events</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Event 1</h2>
+            <img src="event.jpg" alt="Event">
+        </div>
+
+        <div class="card">
+            <h2>Event 2</h2>
+            <img src="event.jpg" alt="Event">
+        </div>
+
+    </div>
+
+</body>
+</html>

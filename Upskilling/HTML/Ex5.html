@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration Form</title>
+
+    <style>
+        form{
+            width: 400px;
+            margin: auto;
+            border: 2px solid black;
+            padding: 20px;
+        }
+
+        input, select, textarea{
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+
+        button{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 align="center">Event Registration Form</h2>
+
+    <form oninput="msg.value='Registration Submitted Successfully!'">
+
+        Name:
+        <input type="text"
+               placeholder="Enter your name"
+               required
+               autofocus>
+
+        Email:
+        <input type="email"
+               placeholder="Enter your email"
+               required>
+
+        Event Date:
+        <input type="date" required>
+
+        Event Type:
+        <select required>
+            <option value="">Select Event</option>
+            <option>Workshop</option>
+            <option>Sports</option>
+            <option>Cultural</option>
+        </select>
+
+        Message:
+        <textarea placeholder="Enter your message"></textarea>
+
+        <button type="submit">Register</button>
+        <br><br>
+
+        <output name="msg"></output>
+
+    </form>
+
+</body>
+</html>

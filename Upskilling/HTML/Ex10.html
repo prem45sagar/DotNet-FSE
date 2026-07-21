@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debugging Demo</title>
+
+    <style>
+        #box{
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 100px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Chrome DevTools Debugging Demo</h2>
+
+    <div id="box">Debug Me</div>
+
+    <button onclick="changeColor()">Change Color</button>
+
+    <script>
+        function changeColor() {
+
+            console.log("Button Clicked");
+
+            let box = document.getElementById("box");
+
+            box.style.backgroundColor = "yellow";
+
+            let message = "Color Changed";
+            console.log(message);
+
+        }
+    </script>
+
+</body>
+</html>
