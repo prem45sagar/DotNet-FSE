@@ -1,0 +1,34 @@
+<h2>Student Management</h2>
+
+<input type="number" placeholder="ID" [(ngModel)]="student.id">
+
+<input type="text" placeholder="Name" [(ngModel)]="student.name">
+
+<input type="number" placeholder="Age" [(ngModel)]="student.age">
+
+<input type="text" placeholder="Course" [(ngModel)]="student.course">
+
+<button (click)="addStudent()">Add Student</button>
+
+<hr>
+
+<table border="1">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Course</th>
+<th>Action</th>
+</tr>
+
+<tr *ngFor="let s of service.getStudents()">
+<td>{{s.id}}</td>
+<td>{{s.name}}</td>
+<td>{{s.age}}</td>
+<td>{{s.course}}</td>
+<td>
+<button (click)="deleteStudent(s.id)">Delete</button>
+</td>
+</tr>
+
+</table>
