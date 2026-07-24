@@ -1,5 +1,7 @@
-# DevOps
+# Moved: DevOps and CICD
 
-This folder is created to hold DevOps-related documentation, scripts, and configuration for the Week-6 module.
+This folder has been reorganized and moved to:
 
-Folders are used to organize CI/CD, containerization, deployment manifests, monitoring, and other automation.
+- DeepSkilling/Week-6/DevOps and CICD
+
+Please see the new README there for the DevOps and CI/CD documentation and resources.
