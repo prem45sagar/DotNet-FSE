@@ -1,5 +1,40 @@
-# DevOps and CICD
 
-This folder is created to hold DevOps- and CI/CD-related documentation, scripts, and configuration for the Week-6 module.
+# DevOps and CI/CD Demo
 
-Folders are used to organize CI/CD, containerization, deployment manifests, monitoring, and other automation.
+## Objective
+
+Demonstrate a simple CI/CD pipeline using GitHub Actions.
+
+## Technologies
+
+- Git
+- GitHub
+- GitHub Actions
+- HTML
+- CSS
+- JavaScript
+
+## CI/CD Workflow
+
+1. Push code to GitHub.
+2. GitHub Actions automatically starts.
+3. Repository is checked out.
+4. Workflow executes.
+5. Build completes successfully.
+
+## Workflow File
+
+```
+.github/workflows/ci.yml
+```
+
+## Features
+
+- Automatic build
+- Continuous Integration
+- GitHub Actions
+- Version Control
+
+## Run Project
+
+Open **index.html** in a browser.
