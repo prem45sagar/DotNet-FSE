@@ -1,0 +1,7 @@
+HOL-3 ANSWERS
+
+git branch GitNewBranch git branch -a git checkout GitNewBranch
+(Create/Edit files) git add . git commit -m “Branch changes” git status
+git checkout master git diff master GitNewBranch git mergetool git merge
+GitNewBranch git log –oneline –graph –decorate git branch -d
+GitNewBranch git status
