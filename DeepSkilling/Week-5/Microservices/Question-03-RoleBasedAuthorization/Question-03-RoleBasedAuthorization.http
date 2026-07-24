@@ -1,0 +1,6 @@
+@Question_03_RoleBasedAuthorization_HostAddress = http://localhost:5258
+
+GET {{Question_03_RoleBasedAuthorization_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

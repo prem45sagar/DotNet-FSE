@@ -1,0 +1,6 @@
+@Question_04_ValidateJWTExpiry_HostAddress = http://localhost:5062
+
+GET {{Question_04_ValidateJWTExpiry_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
