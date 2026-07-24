@@ -1,5 +1,61 @@
-# Containerization using Docker
+# Docker Demo
 
-This folder holds containerization-related documentation, Dockerfiles, container build instructions, and related deployment manifests for Week-6.
+## Objective
 
-Add your Dockerfiles, container images documentation, and container orchestration configs here.
+Demonstrate containerization using Docker.
+
+## Technologies
+
+- Docker
+- Docker Compose
+- HTML
+- CSS
+- JavaScript
+- Nginx
+
+## Files
+
+- Dockerfile
+- docker-compose.yml
+
+## Build Docker Image
+
+```bash
+docker build -t docker-demo .
+```
+
+## Run Container
+
+```bash
+docker run -d -p 8080:80 docker-demo
+```
+
+## Using Docker Compose
+
+```bash
+docker-compose up --build
+```
+
+## Open Browser
+
+```
+http://localhost:8080
+```
+
+## Docker Commands Used
+
+```bash
+docker images
+
+docker ps
+
+docker stop <container_id>
+
+docker rm <container_id>
+
+docker rmi docker-demo
+
+docker network ls
+
+docker volume ls
+```
