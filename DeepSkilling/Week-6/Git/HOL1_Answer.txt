@@ -1,0 +1,39 @@
+HOL-1 ANSWERS
+
+1.  Check Git installation git –version
+
+2.  Configure username git config –global user.name “YourName”
+
+3.  Configure email git config –global user.email “yourmail@example.com”
+
+4.  Verify configuration git config –global –list
+
+5.  Check Notepad++ notepad++
+
+6.  Set Notepad++ as default editor git config –global core.editor
+    “notepad++.exe -multiInst -nosession”
+
+7.  Verify editor git config –global -e
+
+8.  Create repository git init GitDemo
+
+9.  Go to repository cd GitDemo
+
+10. Show hidden files ls -al
+
+11. Create welcome.txt echo “Welcome to the version control” >
+    welcome.txt
+
+12. Verify file ls cat welcome.txt
+
+13. Check status git status
+
+14. Track file git add welcome.txt
+
+15. Commit git commit
+
+16. Check status git status
+
+17. Pull git pull origin master
+
+18. Push git push origin master
