@@ -1,0 +1,9 @@
+HOL-4 ANSWERS
+
+git status git branch GitWork git checkout GitWork (Create hello.xml)
+git add hello.xml git commit -m “Added hello.xml” git checkout master
+(Create different hello.xml) git add hello.xml git commit -m “Master
+changes” git log –oneline –graph –decorate –all git diff git mergetool
+git merge GitWork (Resolve conflict) git add . git commit (Add backup
+file to .gitignore) git add .gitignore git commit -m “Updated gitignore”
+git branch git branch -d GitWork git log –oneline –graph –decorate
