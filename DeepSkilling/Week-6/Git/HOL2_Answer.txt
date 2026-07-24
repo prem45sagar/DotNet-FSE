@@ -1,0 +1,9 @@
+HOL-2 ANSWERS
+
+Create: .log file log folder
+
+Create .gitignore
+
+Add: *.log log/
+
+Verify: git status
