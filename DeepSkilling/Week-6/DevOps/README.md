@@ -1,7 +1,3 @@
-# Moved: DevOps and CICD
+# Moved from DevOps
 
-This folder has been reorganized and moved to:
-
-- DeepSkilling/Week-6/DevOps and CICD
-
-Please see the new README there for the DevOps and CI/CD documentation and resources.
+This folder was moved to DeepSkilling/Week-6/DevOps and CICD. Old contents were migrated there.
